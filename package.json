@@ -1,6 +1,6 @@
 {
   "name": "deling",
-  "version": "1.0.0-alpha",
+  "version": "1.0.0-beta",
   "description": "Simple environment configuration for node",
   "main": "lib/index.js",
   "directories": {
