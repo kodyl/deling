@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/boligbesked/deling.git"
+    "url": "https://github.com/kodyl/deling.git"
   },
   "keywords": [
     "config",
@@ -24,9 +24,9 @@
   "author": "Daniel Juhl <danieljuhl@gmail.com> (http://danieljuhl.dk/)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/boligbesked/deling/issues"
+    "url": "https://github.com/kodyl/deling/issues"
   },
-  "homepage": "https://github.com/boligbesked/deling",
+  "homepage": "https://github.com/kodyl/deling",
   "devDependencies": {
     "babel": "^4.7.16"
   }
