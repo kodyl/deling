@@ -8,6 +8,15 @@ lib/%.js: src/%.js
 	@mkdir -p $(@D)
 	$(BIN)/babel $< -o $@
 
+lint:
+	@ $(BIN)/eslint .
+
+test: lint
+	@ NODE_PATH='./test' $(BIN)/mocha \
+		--require mocha-clean           \
+		--compilers js:babel/register   \
+		./test/*.test.js
+
 clean:
 	@rm -rf ./lib
 
@@ -15,11 +24,5 @@ build: test clean lib
 
 dev:
 	@ node ./example/index.js
-
-test:
-	@ NODE_PATH='./test' $(BIN)/mocha \
-		--require mocha-clean           \
-		--compilers js:babel/register   \
-		./test/*.test.js
 
 .PHONY: install test dev
