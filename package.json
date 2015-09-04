@@ -28,6 +28,6 @@
   },
   "homepage": "https://github.com/kodyl/deling",
   "devDependencies": {
-    "babel": "^4.7.16"
+    "babel": "5.8.23",
   }
 }
