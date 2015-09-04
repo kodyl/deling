@@ -1,5 +1,6 @@
 import path from 'path';
 
+const errors = [];
 
 import { assign, exists } from './utils';
 
@@ -73,6 +74,7 @@ function deling () {
       return require(file);
     }
     catch (err) {
+      errors.push(err);
       return {};
     }
   }
@@ -85,3 +87,12 @@ function deling () {
 const config = deling();
 
 export default config;
+
+export function includePkgJson( key = 'pkgJson' ) {
+  config[key] = getBaseInfo().pkgJson;
+}
+
+export function getErrors() {
+  return errors;
+}
+
