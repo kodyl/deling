@@ -4,7 +4,7 @@ var deling = require('../lib');
 var includePkgJson = deling.includePkgJson;
 var getErrors = deling.getErrors;
 
-describe('deling', function () {
+describe('deling (lib as ES5)', function () {
 
 	describe('default', function () {
 		it('should export the config object as default', function () {

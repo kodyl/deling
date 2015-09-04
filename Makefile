@@ -5,7 +5,7 @@ LIB   = $(SRC:src/%.js=lib/%.js)
 
 lib: $(LIB)
 lib/%.js: src/%.js
-	@mkdir -p $(@D)
+	@ mkdir -p $(@D)
 	$(BIN)/babel $< -o $@
 
 lint:
@@ -22,7 +22,7 @@ test-build:
 clean:
 	@rm -rf ./lib
 
-build: test clean lib
+build: test clean lib test-build
 
 dev:
 	@ node ./example/index.js

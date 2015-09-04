@@ -1,7 +1,7 @@
 import assert from 'assert';
 import deling, { includePkgJson, getErrors } from '../src';
 
-describe('deling', () => {
+describe('deling (src)', () => {
 
 	describe('default', () => {
 		it('should export the config object as default', () => {
