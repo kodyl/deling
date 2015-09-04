@@ -4,20 +4,20 @@ import path from 'path';
 import { assign, exists } from './utils';
 
 function getPackageJson(dir) {
-  var pkg = path.join(dir, 'package.json')
+  const pkg = path.join(dir, 'package.json')
   return exists(pkg) ? require(pkg) : false
 }
 
 function getRoot () {
   let pkgJson = false;
 
-  if (!!~__dirname.indexOf('node_modules')) {
+  if (__dirname.indexOf('node_modules') !== -1) {
     let dir = module.id;
 
     while (path.basename(dir) !== 'node_modules') {
       dir = path.dirname(dir);
     }
-    return [ path.dirname(dir), pkgJson ];
+    return { rootPath: path.dirname(dir), pkgJson };
   }
 
   let dir = module;
@@ -26,28 +26,27 @@ function getRoot () {
     dir = dir.parent;
     pkgJson = getPackageJson(path.dirname(dir.filename));
   }
-  return [ path.dirname(dir.filename), pkgJson ];
+  return { rootPath: path.dirname(dir.filename), pkgJson };
 }
 
 function getBaseInfo () {
-  const [ rootPath, pkgJson ] = getRoot();
+  const { rootPath, pkgJson } = getRoot();
 
-  return [
-    process.env.NODE_ENV || 'development',
-    rootPath,
-    pkgJson || getPackageJson(rootPath)
-  ];
+  return {
+    env: process.env.NODE_ENV || 'development',
+    root: rootPath,
+    pkgJson: pkgJson || getPackageJson(rootPath)
+  };
 }
 
 function deling () {
-  const [ env, root, pkgJson ] = getBaseInfo();
+  const { env, root, pkgJson } = getBaseInfo();
 
   const config = {
-//    pkgJson,
     root,
     env,
-    name: pkgJson.name || '',
-    version: pkgJson.version || ''
+    name: pkgJson.name || '',
+    version: pkgJson.version || ''
   };
 
   const files = [];
@@ -83,4 +82,6 @@ function deling () {
   return config;
 }
 
-export default deling();
+const config = deling();
+
+export default config;
