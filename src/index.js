@@ -1,30 +1,7 @@
-'use strict';
-
-import fs from 'fs';
 import path from 'path';
 
-const exists = fs.existsSync;
 
-function isObject (obj) {
-  return ( typeof obj === 'object' && !Array.isArray(obj) );
-}
-
-// Deep assign
-function assign (target, source) {
-  if (isObject(target) && isObject(source)) {
-    Object.keys(source).reduce((target, key) => {
-      if (!target.hasOwnProperty(key)) {
-        target[key] = source[key];
-      }
-      else {
-        target[key] = isObject(source[key]) ? assign(target[key], source[key]) : source[key];
-      }
-      return target;
-    }, target);
-  }
-
-  return target;
-}
+import { assign, exists } from './utils';
 
 function getPackageJson(dir) {
   var pkg = path.join(dir, 'package.json')
