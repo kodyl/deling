@@ -86,13 +86,13 @@ function deling () {
 
 const config = deling();
 
-export default config;
-
-export function includePkgJson( key = 'pkgJson' ) {
+config.includePkgJson = function includePkgJson( key = 'pkgJson' ) {
   config[key] = getBaseInfo().pkgJson;
 }
 
-export function getErrors() {
+config.getErrors = function getErrors() {
   return errors;
 }
+
+export default config;
 
