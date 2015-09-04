@@ -14,7 +14,10 @@ lint:
 test: lint
 	@ NODE_PATH='./test' $(BIN)/mocha \
 		--compilers js:babel/register   \
-		./test/tests.js
+		./test/src.js
+
+test-build:
+	@ NODE_PATH='./test' $(BIN)/mocha ./test/lib.js
 
 clean:
 	@rm -rf ./lib
